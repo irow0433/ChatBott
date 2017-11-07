@@ -11,7 +11,7 @@ public class ChatController
 	
 	public ChatController()
 	{
-		chatbot = new Chatbot("Isaac Rowette");
+		chatbot = new Chatbot("Isaac Rowlette");
 		display = new PopupDisplay();
 	}
 	

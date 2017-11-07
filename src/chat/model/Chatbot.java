@@ -88,7 +88,6 @@ public class Chatbot
 		shoppingList.add("snacks");
 		shoppingList.add("veggies");
 		shoppingList.add("protein");
-		shoppingList.add("slug bait");
 		shoppingList.add("gross things");		
 	}
 	
@@ -156,6 +155,10 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
+		if(input.equals("@") && input != null)
+		{
+			return true;
+		}
 		return false;
 	}
 	
@@ -171,16 +174,31 @@ public class Chatbot
 	
 	public boolean shoppingListChecker(String shoppingItem)
 	{
+		for(String item: shoppingList)
+		{
+			if(shoppingList != null && shoppingItem.equalsIgnoreCase(item))
+			{
+				return true;
+			}
+		}
 		return false;
 	}
 	
 	public boolean movieTitleChecker(String title)
 	{
+		if(title != null && title.length() > 3)
+		{
+			return true;
+		}
 		return false;
 	}
 	
 	public boolean movieGenreChecker(String genre)
 	{
+		if(genre != null && genre.length() > 4)
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -250,7 +268,8 @@ public class Chatbot
 	
 	public LocalTime getCurrentTime()
 	{
-		return null;
+		currentTime = LocalTime.now();
+				return currentTime;
 	}
 	
 	public void setUsername(String username)
