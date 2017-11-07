@@ -125,7 +125,7 @@ public class Chatbot
 	
 	private String buildChatbotResponse()
 	{
-		String response = " I ";
+		String response = "I ";
 		int random = (int) (Math.random() * verbs.length);
 		
 		response += verbs[random];
@@ -135,6 +135,14 @@ public class Chatbot
 		
 		random = (int) (Math.random() * questions.length);
 		response += questions[random];
+		
+		random = (int) (Math.random() * 2);
+		
+		if (random % 2 ==0)
+		{
+			random = (int) (Math.random() * movieList.size());
+					response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
+		}
 		
 		return response;
 	}
@@ -217,7 +225,7 @@ public class Chatbot
 	}
 	
 	public List<Movie> getMovieList()
-	{
+	{	
 		return movieList;
 	}
 	
