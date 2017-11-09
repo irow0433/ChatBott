@@ -20,7 +20,7 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = null;
+		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.questions = new String[10];
@@ -37,28 +37,28 @@ public class Chatbot
 		buildFollowups();
 		buildQuestions();	
 		buildShoppingList();
+		buildMovieList();
+		buildCuteAnimals();
 	}
 	
 	private void buildVerbs()
 	{
-		verbs[0] = " like ";
-		verbs[1] = " dislike ";
-		verbs[2] = " am ambivalent about ";
-		verbs[3] = " am thinking about ";
+		verbs[0] = " like";
+		verbs[1] = " dislike";
+		verbs[2] = " am ambivalent about";
+		verbs[3] = " am thinking about";
 	}
 
 	private void buildMovieList()
 	{
 		Movie StarWars = new Movie("Star Wars");
 		Movie Hulk = new Movie("Hulk");
-		Movie TheRevenant = new Movie("The Revenant");
 		Movie Warrior = new Movie("Warrior");
 		Movie LordofTheRings = new Movie("Lord of The Rings");
 		Movie SpiderMan = new Movie("SpiderMan");
 		Movie HiddenFigures = new Movie("Hidden Figures");
 		movieList.add(StarWars);
 		movieList.add(Hulk);
-		movieList.add(TheRevenant);
 		movieList.add(Warrior);
 		movieList.add(LordofTheRings);
 		movieList.add(SpiderMan);
@@ -70,12 +70,12 @@ public class Chatbot
 	private void buildTopics()
 	{
 		topics[0] = " Football ";
-		topics[1] = " Rap ";
-		topics[2] = " Life ";
-		topics[3] = " Mario ";
-		topics[4] = " Cereal ";
-		topics[5] = " T.V. Shows ";
-		topics[6] = " Google ";
+		topics[1] = " Rap";
+		topics[2] = " Life";
+		topics[3] = " Mario";
+		topics[4] = " Cereal";
+		topics[5] = " T.V. Shows";
+		topics[6] = " Google";
 	}
 	
 	private void buildFollowups()
@@ -88,13 +88,14 @@ public class Chatbot
 		shoppingList.add("snacks");
 		shoppingList.add("veggies");
 		shoppingList.add("protein");
-		shoppingList.add("gross things");		
+		shoppingList.add("gross things");	
+		shoppingList.add("turkey");
 	}
 	
 	private void buildCuteAnimals()
 	{
 		cuteAnimalMemes.add("otter");
-		cuteAnimalMemes.add("pupper");
+		//cuteAnimalMemes.add("pupper");
 		cuteAnimalMemes.add("kittie");
 		cuteAnimalMemes.add("FLOOFER");
 		
@@ -102,7 +103,7 @@ public class Chatbot
 	
 	private void buildQuestions()
 	{
-		questions[0] = "What is your favorite movie?";
+		questions[0] = "What is your user name?";
 		questions[1] = "What is your address?";
 		questions[2] = "Who are your parents?";
 		questions[3] = "Whats your favorite thing to do?";
@@ -114,6 +115,13 @@ public class Chatbot
 		questions[9] = "Would you like to run off into the sunset?";
 	}
 	
+	/**
+	 * describe what the method does using a complete sentence(s)
+	 * Description - takes what the users text input is and processes it and returns a string.
+	 * @param input Explain each parameter using a full sentence too
+	 * @return Define what is returned
+	 */
+	
 	public String processConversation(String input)
 	{
 		String chatbotResponse = " ";
@@ -123,6 +131,10 @@ public class Chatbot
 		return chatbotResponse;
 	}
 	
+	/**
+	 * builds a random response using the chatbot's sentence part arrays
+	 * @return The random response of the chatbot
+	 */
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
@@ -163,7 +175,7 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		if(input.equals("@") && input != null)
+		if(input.equals("@isaacrowlette") && input != null)
 		{
 			return true;
 		}
@@ -241,7 +253,7 @@ public class Chatbot
 
 	public String [] getQuestions()
 	{
-		return null;
+		return questions;
 	}
 	
 	public String[] getVerbs()
