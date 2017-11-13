@@ -175,7 +175,7 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		if(input.equals("@isaacrowlette") && input != null)
+		if(input.equals("@") && input != null)
 		{
 			return true;
 		}
