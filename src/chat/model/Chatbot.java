@@ -38,7 +38,7 @@ public class Chatbot
 		buildQuestions();	
 		buildShoppingList();
 		buildMovieList();
-		buildCuteAnimals();
+		//buildCuteAnimals();
 	}
 	
 	private void buildVerbs()
@@ -92,14 +92,14 @@ public class Chatbot
 		shoppingList.add("turkey");
 	}
 	
-	private void buildCuteAnimals()
-	{
-		cuteAnimalMemes.add("otter");
+	//private void buildCuteAnimals()
+	//{
+		//cuteAnimalMemes.add("otter");
 		//cuteAnimalMemes.add("pupper");
-		cuteAnimalMemes.add("kittie");
-		cuteAnimalMemes.add("FLOOFER");
+		//cuteAnimalMemes.add("kittie");
+		//cuteAnimalMemes.add("FLOOFER");
 		
-	}
+	//}
 	
 	private void buildQuestions()
 	{

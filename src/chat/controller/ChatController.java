@@ -2,17 +2,20 @@ package chat.controller;
 import javax.swing.*;
 
 import chat.model.Chatbot;
-import chat.view.PopupDisplay;
+import chat.view.*;
 
 public class ChatController 
 {
 	private Chatbot chatbot;
 	private PopupDisplay display;
+	private ChatFrame appFrame;
 	
 	public ChatController()
 	{
 		chatbot = new Chatbot("Isaac Rowlette");
+		//View initialized after Model
 		display = new PopupDisplay();
+		appFrame = new ChatFrame(this);
 	}
 	
 	public void start()
