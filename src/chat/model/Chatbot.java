@@ -3,7 +3,11 @@ package chat.model;
 import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
+/**
+ * The chatbot model includes all of the methods needed for the user
+ * @author Isaac Rowlette
+ *
+ */
 public class Chatbot
 {
 	private List<Movie> movieList;
@@ -17,7 +21,10 @@ public class Chatbot
 	private String content;
 	private String intro;
 	private LocalTime currentTime;
-	
+	/**
+	 * in a way activates and gives a perpose to the programs.
+	 * @param username
+	 */
 	public Chatbot(String username)
 	{
 		this.movieList = new ArrayList<Movie>();
@@ -40,7 +47,9 @@ public class Chatbot
 		buildMovieList();
 		//buildCuteAnimals();
 	}
-	
+	/**
+	 * gives the program a verb to use for the response
+	 */
 	private void buildVerbs()
 	{
 		verbs[0] = " like";
@@ -48,7 +57,9 @@ public class Chatbot
 		verbs[2] = " am ambivalent about";
 		verbs[3] = " am thinking about";
 	}
-
+	/**
+	 * gives the program  a list of movies to say and uses the verbs to create a sentence
+	 */
 	private void buildMovieList()
 	{
 		Movie StarWars = new Movie("Star Wars");
@@ -66,7 +77,9 @@ public class Chatbot
 		
 		
 	}
-	
+	/**
+	 * gives the program a list of topics to talk about
+	 */
 	private void buildTopics()
 	{
 		topics[0] = " Football ";
@@ -100,7 +113,9 @@ public class Chatbot
 		//cuteAnimalMemes.add("FLOOFER");
 		
 	//}
-	
+	/**
+	 * gives the chatbot a question to ask
+	 */
 	private void buildQuestions()
 	{
 		questions[0] = "What is your user name?";
@@ -221,7 +236,7 @@ public class Chatbot
 		}
 		return false;
 	}
-
+	
 	public boolean quitChecker(String exitString)
 	{
 		if (exitString!= null && exitString.equalsIgnoreCase("quit"))

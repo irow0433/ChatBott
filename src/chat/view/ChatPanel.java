@@ -1,5 +1,9 @@
 package chat.view;
+import javax.swing.SpringLayout;
+import chat.controller.ChatController;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -15,13 +19,19 @@ public class ChatPanel extends JPanel
 	
 	public ChatPanel(ChatController appController)
 	{
+		/**super must be the first thing called because extends was used in this method
+		 * all five privates above are calling the different things.
+		 * the imports are calling the other class so they can get the info from each other
+		 */
 		super();
 		this.appController = appController;
 		chatButton = new JButton("chat");
 		chatArea = new JTextArea(10, 15);
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
-		
+		/**
+		 * the "setups" below call the privates that are below that.
+		 */
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -29,7 +39,16 @@ public class ChatPanel extends JPanel
 	
 	private void setupListeners()
 	{
-		
+		chatButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = inputField.getText();
+				String displayText = appController.intectWithChatbot(userText);
+				chatArea.append(displayText);
+				inputField.setText("");
+			}
+		});
 	}
 	
 	private void setupLayout()
@@ -45,10 +64,12 @@ public class ChatPanel extends JPanel
 	
 	private void setupPanel()
 	{
-		this.setBackground(Color.GREEN);
+		this.setBackground(Color.ORANGE);
 		this.setLayout(appLayout);
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		chatArea.setEnabled(false);
+		chatArea.setEditable(false);
 	}
 }

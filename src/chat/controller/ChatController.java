@@ -3,7 +3,11 @@ import javax.swing.*;
 
 import chat.model.Chatbot;
 import chat.view.*;
-
+/**
+ * this is a controller that will when the app is run will pop up with what the what is in "public void start"
+ * @author Isaac Rowlette
+ *
+ */
 public class ChatController 
 {
 	private Chatbot chatbot;
@@ -17,11 +21,14 @@ public class ChatController
 		display = new PopupDisplay();
 		appFrame = new ChatFrame(this);
 	}
-	
+	/**
+	 * public void start creates the start of program 
+	 */
 	public void start()
+
 	{
-		
-		String response = display.collectResponse("What would you like to talk about?");
+		display.displayText("Welcome to Chatbot");
+		//String response = display.collectResponse("Lets begin the conversation but you must start");
 		
 //		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
 //		{
@@ -31,7 +38,25 @@ public class ChatController
 		
 	}
 	
-
+	public String intectWithChatbot(String input)
+	{
+		String chatbotSays = "";
+		
+		if(chatbot.quitChecker(input))
+		{
+			
+		}
+		
+		chatbotSays += chatbot.processConversation(input);
+		
+		return chatbotSays;
+	}
+	
+	private void close()
+	{
+		display.displayText("GoodBye");
+		System.exit(0);
+	}
 	
 	private String popupChat(String chat)
 	{
