@@ -45,7 +45,8 @@ public class Chatbot
 		buildQuestions();	
 		buildShoppingList();
 		buildMovieList();
-		//buildCuteAnimals();
+		buildCuteAnimals();
+
 	}
 	/**
 	 * gives the program a verb to use for the response
@@ -93,7 +94,7 @@ public class Chatbot
 	
 	private void buildFollowups()
 	{
-		
+	
 	}
 	
 	private void buildShoppingList()
@@ -105,14 +106,14 @@ public class Chatbot
 		shoppingList.add("turkey");
 	}
 	
-	//private void buildCuteAnimals()
-	//{
-		//cuteAnimalMemes.add("otter");
-		//cuteAnimalMemes.add("pupper");
-		//cuteAnimalMemes.add("kittie");
-		//cuteAnimalMemes.add("FLOOFER");
+	private void buildCuteAnimals()
+	{
+		cuteAnimalMemes.add("otter");
+		cuteAnimalMemes.add("pupper");
+		cuteAnimalMemes.add("kittie");
+		cuteAnimalMemes.add("FLOOFER");
 		
-	//}
+	}
 	/**
 	 * gives the chatbot a question to ask
 	 */
@@ -248,6 +249,33 @@ public class Chatbot
 
 	public boolean keyboardMashChecker(String sample)
 	{
+		//The word were can be incorrectly shown as mash as I check for keys
+		if(sample.toLowerCase().contains("were"))
+		{
+			return false;
+		}
+		
+		String keyboard = "wqqertyuiop[]asdfghjkl;'zxcvbnm,./";
+		for (int index = 0; index< sample.length() - 2; index ++)
+		{
+			String sampleKeys = sample.substring(index, index +3);
+			for(int i = 0; i < keyboard.length() - 2; i++)
+			{
+				String keys = keyboard.substring(i, i + 3);
+						//check forward
+						if(keys.equals(sampleKeys.toLowerCase()))
+						{
+							return true;
+						}
+				//check backward
+				keys = keys.substring(2, 3) + keys.substring(1, 2) + keys.substring(0, 1);
+				if(keys.equals(sampleKeys.toLowerCase()))
+				{
+					return true;
+				}
+				
+			}
+		}
 		return false;
 	}
 	

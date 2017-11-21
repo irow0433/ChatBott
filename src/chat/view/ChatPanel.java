@@ -5,6 +5,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The JPanel subclass for the chatbot project
+ * @author Isaac Rowlette
+ * @version 21/11/17 1.2
+ */
+
 import javax.swing.*;
 
 import chat.controller.ChatController;
@@ -13,6 +19,7 @@ public class ChatPanel extends JPanel
 {
 	private ChatController appController;
 	private JButton chatButton;
+	private JButton checkerButton;
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
@@ -49,6 +56,21 @@ public class ChatPanel extends JPanel
 				inputField.setText("");
 			}
 		});
+		
+		checkerButton.addActionListener(new ActionListener()
+		{	
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = inputField.getText();
+				String displayText = appController.useCheckers(userText);
+				chatArea.append(displayText);
+				inputField.setText("");
+			}
+		});
+			
+		
+			
+				
 	}
 	
 	private void setupLayout()

@@ -3,6 +3,7 @@ import javax.swing.*;
 
 import chat.model.Chatbot;
 import chat.view.*;
+
 /**
  * this is a controller that will when the app is run will pop up with what the what is in "public void start"
  * @author Isaac Rowlette
@@ -50,6 +51,23 @@ public class ChatController
 		chatbotSays += chatbot.processConversation(input);
 		
 		return chatbotSays;
+	}
+	
+	public String useCheckers(String text)
+	{
+		String response = "";
+		
+		if(chatbot.contentChecker(text))
+		{
+			response += "This text matches tthe scial contnentt\n";
+		}
+		if(chatbotcuteAnimalMemeChecker(text))
+		{
+			response += "";
+		}
+		//continue will all checkers except length and quit checker
+		
+		return response;
 	}
 	
 	private void close()
