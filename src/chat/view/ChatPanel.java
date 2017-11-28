@@ -23,6 +23,7 @@ public class ChatPanel extends JPanel
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
+	private JLabel infoLabel;
 	
 	public ChatPanel(ChatController appController)
 	{
@@ -36,6 +37,9 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10, 15);
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
+		infoLabel = new JLabel("Type to chat with the chatbot");
+		appLayout.putConstraint(SpringLayout.WEST, infoLabel, 116, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.SOUTH, infoLabel, -6, SpringLayout.NORTH, inputField);
 		/**
 		 * the "setups" below call the privates that are below that.
 		 */
@@ -91,6 +95,7 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		this.add(infoLabel);
 		chatArea.setEnabled(false);
 		chatArea.setEditable(false);
 	}

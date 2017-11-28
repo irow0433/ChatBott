@@ -71,6 +71,10 @@ public class ChatController
 		return response;
 	}
 	
+	private boolean chatbotcuteAnimalMemeChecker(String text) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	private void close()
 	{
 		display.displayText("GoodBye");
