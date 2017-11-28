@@ -3,6 +3,7 @@ import javax.swing.*;
 
 import chat.model.Chatbot;
 import chat.view.*;
+import chat.tests.ControllerTest;
 
 /**
  * this is a controller that will when the app is run will pop up with what the what is in "public void start"
@@ -84,4 +85,10 @@ public class ChatController
 		
 		return chatbotSays;
 	}
+	
+	public Chatbot getChatbot()
+	{
+		return chatbot;
+	}
+	
 }
