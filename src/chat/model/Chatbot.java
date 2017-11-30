@@ -3,7 +3,11 @@ package chat.model;
 import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
+/**
+ * The chatbot model includes all of the methods needed for the user
+ * @author Isaac Rowlette
+ *
+ */
 public class Chatbot
 {
 	private List<Movie> movieList;
@@ -17,7 +21,10 @@ public class Chatbot
 	private String content;
 	private String intro;
 	private LocalTime currentTime;
-	
+	/**
+	 * in a way activates and gives a perpose to the programs.
+	 * @param username
+	 */
 	public Chatbot(String username)
 	{
 		this.movieList = new ArrayList<Movie>();
@@ -39,8 +46,11 @@ public class Chatbot
 		buildShoppingList();
 		buildMovieList();
 		buildCuteAnimals();
+
 	}
-	
+	/**
+	 * gives the program a verb to use for the response
+	 */
 	private void buildVerbs()
 	{
 		verbs[0] = " like";
@@ -48,7 +58,9 @@ public class Chatbot
 		verbs[2] = " am ambivalent about";
 		verbs[3] = " am thinking about";
 	}
-
+	/**
+	 * gives the program  a list of movies to say and uses the verbs to create a sentence
+	 */
 	private void buildMovieList()
 	{
 		Movie StarWars = new Movie("Star Wars");
@@ -66,7 +78,9 @@ public class Chatbot
 		
 		
 	}
-	
+	/**
+	 * gives the program a list of topics to talk about
+	 */
 	private void buildTopics()
 	{
 		topics[0] = " Football ";
@@ -80,7 +94,7 @@ public class Chatbot
 	
 	private void buildFollowups()
 	{
-		
+	
 	}
 	
 	private void buildShoppingList()
@@ -95,12 +109,14 @@ public class Chatbot
 	private void buildCuteAnimals()
 	{
 		cuteAnimalMemes.add("otter");
-		//cuteAnimalMemes.add("pupper");
+		cuteAnimalMemes.add("pupper");
 		cuteAnimalMemes.add("kittie");
 		cuteAnimalMemes.add("FLOOFER");
 		
 	}
-	
+	/**
+	 * gives the chatbot a question to ask
+	 */
 	private void buildQuestions()
 	{
 		questions[0] = "What is your user name?";
@@ -156,6 +172,23 @@ public class Chatbot
 					response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
 		
+		int followup = (int) (Math.random() * 5);
+		
+		switch (followup)
+		{
+		case 0:
+			response += followUps[0] + "\n";
+			break;
+		case 3:
+			response += followUps[1] + "\n";
+		case 1:
+			response += followUps[2] + "\n";
+			break;
+		default:
+			response += followUps[4] + "\n";
+			response += followUps[3] + "\n";
+		}
+		
 		return response;
 	}
 	
@@ -170,6 +203,7 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
+		
 		return false;
 	}
 	
@@ -221,7 +255,7 @@ public class Chatbot
 		}
 		return false;
 	}
-
+	
 	public boolean quitChecker(String exitString)
 	{
 		if (exitString!= null && exitString.equalsIgnoreCase("quit"))
@@ -233,6 +267,33 @@ public class Chatbot
 
 	public boolean keyboardMashChecker(String sample)
 	{
+		//The word were can be incorrectly shown as mash as I check for keys
+		if(sample.toLowerCase().contains("were"))
+		{
+			return false;
+		}
+		
+		String keyboard = "wqqertyuiop[]asdfghjkl;'zxcvbnm,./";
+		for (int index = 0; index< sample.length() - 2; index ++)
+		{
+			String sampleKeys = sample.substring(index, index +3);
+			for(int i = 0; i < keyboard.length() - 2; i++)
+			{
+				String keys = keyboard.substring(i, i + 3);
+						//check forward
+						if(keys.equals(sampleKeys.toLowerCase()))
+						{
+							return true;
+						}
+				//check backward
+				keys = keys.substring(2, 3) + keys.substring(1, 2) + keys.substring(0, 1);
+				if(keys.equals(sampleKeys.toLowerCase()))
+				{
+					return true;
+				}
+				
+			}
+		}
 		return false;
 	}
 	
