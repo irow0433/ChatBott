@@ -40,7 +40,7 @@ public class ChatController
 		
 	}
 	
-	public String intectWithChatbot(String input)
+	public String interactWithChatbot(String input)
 	{
 		String chatbotSays = "";
 		
