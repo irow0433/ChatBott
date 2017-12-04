@@ -45,7 +45,7 @@ public class Chatbot
 		buildQuestions();	
 		buildShoppingList();
 		buildMovieList();
-		buildCuteAnimals();
+		//buildCuteAnimals();
 
 	}
 	/**
@@ -106,12 +106,12 @@ public class Chatbot
 		shoppingList.add("turkey");
 	}
 	
-	private void buildCuteAnimals()
+	//private void buildCuteAnimals()
 	{
-		cuteAnimalMemes.add("otter");
-		cuteAnimalMemes.add("pupper");
-		cuteAnimalMemes.add("kittie");
-		cuteAnimalMemes.add("FLOOFER");
+		//cuteAnimalMemes.add("otter");
+		//cuteAnimalMemes.add("pupper");
+		//cuteAnimalMemes.add("kittie");
+		//cuteAnimalMemes.add("FLOOFER");
 		
 	}
 	/**
@@ -203,6 +203,19 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
+		if(input.contains("<P>"))
+		{
+			return true;
+		}
+		if(input.contains("HREF")&&(!input.contains("=")))
+		{
+			return false;
+		}
+		if(input.indexOf(">")>input.lastIndexOf(">")&&input.indexOf("<")>input.lastIndexOf("<"))
+		{
+			return true;
+		}
+		
 		
 		return false;
 	}
