@@ -78,12 +78,12 @@ public class ChatbotTest
 	@Test
 	public void testUserNameChecker()
 	{
-		assertTrue("Valid user name should pass", testedChatbot.userNameChecker("@isaacrowlette"));
-		assertFalse("User names will start with an @ symbol", testedChatbot.userNameChecker("isaacrowlette"));
+		assertTrue("Valid user name should pass", testedChatbot.userNameChecker("@IsaacRowlette"));
+		assertFalse("User names will start with an @ symbol", testedChatbot.userNameChecker("IsaacRowlette"));
 		assertFalse("Blank submissions do not return true", testedChatbot.userNameChecker(""));
 		assertFalse("Null submissions do not return true", testedChatbot.userNameChecker(null));
-		assertFalse("Only one @ sign in a username", testedChatbot.userNameChecker("@@isaacrowlette"));
-		assertFalse("Email addresses are not user names", testedChatbot.userNameChecker("isaacr0000@gmail.com"));
+		assertFalse("Only one @ sign in a username", testedChatbot.userNameChecker("@@IsaacRowlette"));
+		assertFalse("Email addresses are not user names", testedChatbot.userNameChecker("IsaacR0000@gmail.com"));
 	}
 
 	@Test

@@ -3,6 +3,7 @@ package chat.model;
 import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import javax.swing.*;
 /**
  * The chatbot model includes all of the methods needed for the user
  * @author Isaac Rowlette
@@ -29,10 +30,10 @@ public class Chatbot
 	{
 		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
-		this.cuteAnimalMemes = null;
+		this.cuteAnimalMemes = new ArrayList<String>();
 		this.questions = new String[10];
 		this.username = username;
-		this.content = null;
+		this.content = "";
 		this.intro = null;
 		this.currentTime = LocalTime.now();
 		this.topics = new String [7];
@@ -45,7 +46,7 @@ public class Chatbot
 		buildQuestions();	
 		buildShoppingList();
 		buildMovieList();
-		//buildCuteAnimals();
+		buildCuteAnimals();
 
 	}
 	/**
@@ -104,14 +105,20 @@ public class Chatbot
 		shoppingList.add("protein");
 		shoppingList.add("gross things");	
 		shoppingList.add("turkey");
+		shoppingList.add("jam");
+		shoppingList.add("ham");
+		shoppingList.add("sandwitch");
+		shoppingList.add("turkey leg");
+		shoppingList.add("poptart");
+		shoppingList.add("cereal");
 	}
 	
-	//private void buildCuteAnimals()
+	private void buildCuteAnimals()
 	{
-		//cuteAnimalMemes.add("otter");
-		//cuteAnimalMemes.add("pupper");
-		//cuteAnimalMemes.add("kittie");
-		//cuteAnimalMemes.add("FLOOFER");
+		cuteAnimalMemes.add("pupper");
+		cuteAnimalMemes.add("otter");
+		cuteAnimalMemes.add("FLOOFER");
+		cuteAnimalMemes.add("kittie");
 		
 	}
 	/**
@@ -210,7 +217,7 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
-		if(input.contains("<P>"))
+		if(input.contains("<P>")) 
 		{
 			return true;
 		}
@@ -218,7 +225,7 @@ public class Chatbot
 		{
 			return false;
 		}
-		if(input.indexOf(">")>input.lastIndexOf(">")&&input.indexOf("<")>input.lastIndexOf("<"))
+		if(input.indexOf(">")<input.lastIndexOf(">")&&input.indexOf("<")<input.lastIndexOf("<"))
 		{
 			return true;
 		}
@@ -229,11 +236,18 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		if(input.equals("@") && input != null)
+		if(input == null || input.length() == 0 || !input.substring(0, 1).equals("@"))
 		{
-			return true;
+			return false;
 		}
-		return false;
+			for(int i =1; i<input.length(); i++)
+			{
+				if(input.substring(i, i+1).equals("@"))
+				{
+					return false;
+				}
+			}
+			return true;
 	}
 	
 	public boolean contentChecker(String contentCheck)
@@ -243,6 +257,13 @@ public class Chatbot
 	
 	public boolean cuteAnimalMemeChecker(String input)
 	{
+		for(String item : cuteAnimalMemes)
+		{
+			if(input.toLowerCase().equals(item))
+			{
+				return true;
+			}
+		}
 		return false;
 	}
 	
@@ -317,13 +338,19 @@ public class Chatbot
 		return false;
 	}
 	
+	public String toString()
+	{
+		String str = "";
+		return str;
+	}
+	
 	public List<Movie> getMovieList()
 	{	
 		return movieList;
 	}
 	
 	public List<String> getShoppingList()
-	{
+	{ 
 		return shoppingList;
 	}
 	
