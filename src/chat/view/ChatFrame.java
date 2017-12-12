@@ -25,4 +25,9 @@ public class ChatFrame extends JFrame
 		this.setVisible(true);
 	}
 
+	public Object getBaseController() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
